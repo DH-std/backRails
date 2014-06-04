@@ -1,0 +1,11 @@
+<h1>
+	<%= gravatar_for @user, size: 40 %> <br>
+	Player 
+	<%= @user.id%>  <br>
+	<%= @user.name%>
+</h1>
+<p>That's all</p>
+<li>
+  <%= link_to "Sign out", signout_path, method: "delete" %>
+</li>
+ 

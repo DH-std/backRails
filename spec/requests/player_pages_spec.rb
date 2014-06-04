@@ -1,24 +1,24 @@
 require 'spec_helper'
 
-describe 'player controller' do
+describe 'user controller' do
   before(:each) do
-    @player = User.new(name: "Example User", email: "user@example.com") 
-    @player.save
+    @user = User.new(name: "Example User", email: "user@example.com") 
+    @user.save
   end
 
 
-  subject { @player }
+  subject { @user }
 
-  describe 'GET /players/:id' do
-    before { get "/players/#{@player.id}.json"}
+  describe 'GET /users/:id' do
+    before { get "/users/#{@user.id}.json"}
     
-    it 'retures the player by :id' do 
-      # assert_equal "{\"id\":#{@player.id},\"name\":\"#{@player.name}\",\"email\":\"#{@player.email}\"}", @response.body
+    it 'retures the user by :id' do 
+      # assert_equal "{\"id\":#{@user.id},\"name\":\"#{@user.name}\",\"email\":\"#{@user.email}\"}", @response.body
       
       response.body.should == {
-        'id' => @player.id,
-        'name' => @player.name,
-        'email' => @player.email
+        'id' => @user.id,
+        'name' => @user.name,
+        'email' => @user.email
       }.to_json
     end
   end
