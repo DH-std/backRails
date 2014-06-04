@@ -9,3 +9,11 @@
   <%= link_to "Sign out", signout_path, method: "delete" %>
 </li>
  
+<div class="span8">
+  <% if @user.games.any? %>
+    <h3>Games (<%= @user.games.count %>)</h3>
+    <ol class="games">
+      <%= render @games %>
+    </ol>
+  <% end %>
+</div>
