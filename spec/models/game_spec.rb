@@ -13,4 +13,5 @@ describe Game do
   it { should respond_to(:bet) }
   it { should respond_to(:player_hand) }
   it { should respond_to(:dealer_hand) }
+  it { should respond_to(:deck) }
 end

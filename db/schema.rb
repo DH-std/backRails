@@ -16,17 +16,36 @@ ActiveRecord::Schema.define(version: 20140604151453) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "games", force: true do |t|
-    t.integer  "user_id"
-    t.string   "game_type"
-    t.integer  "bet"
-    t.string   "player_hand"
-    t.string   "dealer_hand"
+  create_table "cards", force: true do |t|
+    t.integer  "game"
+    t.integer  "hand"
+    t.boolean  "dealt"
+    t.string   "suit"
+    t.integer  "rank"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "games", ["user_id"], name: "index_games_on_user_id", using: :btree
+  add_index "cards", ["game", "hand"], name: "index_cards_on_game_and_hand", using: :btree
+
+  create_table "games", force: true do |t|
+    t.integer  "player"
+    t.string   "game_type"
+    t.integer  "bet"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "games", ["player"], name: "index_games_on_player", using: :btree
+
+  create_table "hands", force: true do |t|
+    t.integer  "game"
+    t.boolean  "player_hand"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "hands", ["game"], name: "index_hands_on_game", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name"

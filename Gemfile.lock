@@ -67,6 +67,7 @@ GEM
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.0.2)
+    fabrication (2.11.2)
     ffi (1.9.3)
     formatador (0.2.5)
     gherkin (2.12.2)
@@ -207,6 +208,7 @@ DEPENDENCIES
   capybara (= 2.1.0)
   coffee-rails (~> 4.0.0)
   cucumber-rails (= 1.4.0)
+  fabrication
   growl (= 1.0.3)
   guard-rspec (= 2.5.0)
   jbuilder (~> 1.2)

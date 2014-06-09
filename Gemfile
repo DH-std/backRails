@@ -26,6 +26,7 @@ group :test do
   gem 'capybara', '2.1.0'
   gem 'cucumber-rails', '1.4.0', :require => false
   gem 'growl', '1.0.3'
+  gem 'fabrication'
 end
 
 group :production do
