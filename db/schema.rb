@@ -17,35 +17,26 @@ ActiveRecord::Schema.define(version: 20140604151453) do
   enable_extension "plpgsql"
 
   create_table "cards", force: true do |t|
-    t.integer  "game"
-    t.integer  "hand"
-    t.boolean  "dealt"
+    t.integer  "game_id"
+    t.integer  "holder",     default: 0
     t.string   "suit"
-    t.integer  "rank"
+    t.string   "rank"
+    t.integer  "value"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "cards", ["game", "hand"], name: "index_cards_on_game_and_hand", using: :btree
+  add_index "cards", ["game_id", "holder"], name: "index_cards_on_game_id_and_holder", using: :btree
 
   create_table "games", force: true do |t|
-    t.integer  "player"
+    t.integer  "user_id"
     t.string   "game_type"
     t.integer  "bet"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "games", ["player"], name: "index_games_on_player", using: :btree
-
-  create_table "hands", force: true do |t|
-    t.integer  "game"
-    t.boolean  "player_hand"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "hands", ["game"], name: "index_hands_on_game", using: :btree
+  add_index "games", ["user_id"], name: "index_games_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name"

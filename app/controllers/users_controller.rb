@@ -9,6 +9,7 @@ class UsersController < ApplicationController
       sign_in @user
       flash[:success] = "Welcome to the Sample App!"
       redirect_to @user
+      set_up_account
     else
       render 'new'
     end
@@ -33,4 +34,12 @@ class UsersController < ApplicationController
       params.require(:user).permit(:name, :email, :password,
                                    :password_confirmation)
     end
+
+    def set_up_account 
+      create_game "Beginner"
+      create_game "Intermediate"
+      create_game "High Roller"
+    end
+
+    
 end
